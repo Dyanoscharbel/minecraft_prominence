@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prominence II - Guide Speedrun Ultime</title>
+    <title>Prominence II - Guide Speedrun Professionnel</title>
     <style>
         * {
             margin: 0;
@@ -12,18 +12,18 @@
         }
         
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #0c0c0c, #1a1a1a, #2d1b69);
-            color: #e0e0e0;
-            line-height: 1.6;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #f8fafc, #e2e8f0);
+            color: #1e293b;
+            line-height: 1.7;
             overflow-x: hidden;
         }
         
         .header {
-            background: linear-gradient(45deg, #ff6b35, #f7931e, #ffd23f);
-            padding: 2rem;
+            background: linear-gradient(135deg, #1e40af, #3b82f6, #60a5fa);
+            padding: 3rem 2rem;
             text-align: center;
-            box-shadow: 0 10px 30px rgba(255, 107, 53, 0.3);
+            box-shadow: 0 4px 20px rgba(30, 64, 175, 0.15);
             position: relative;
             overflow: hidden;
         }
@@ -31,39 +31,32 @@
         .header::before {
             content: '';
             position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: repeating-linear-gradient(
-                0deg,
-                transparent,
-                transparent 2px,
-                rgba(255,255,255,0.1) 2px,
-                rgba(255,255,255,0.1) 4px
-            );
-            animation: scan 3s linear infinite;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.1) 50%, transparent 70%);
+            animation: shine 3s ease-in-out infinite;
         }
         
-        @keyframes scan {
-            0% { transform: translateY(-100%); }
-            100% { transform: translateY(100%); }
+        @keyframes shine {
+            0%, 100% { transform: translateX(-100%); }
+            50% { transform: translateX(100%); }
         }
         
         .header h1 {
-            font-size: 3.5rem;
-            font-weight: 900;
-            color: #000;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: white;
             margin-bottom: 0.5rem;
             position: relative;
             z-index: 2;
         }
         
         .header p {
-            font-size: 1.3rem;
-            color: #333;
-            font-weight: 600;
+            font-size: 1.1rem;
+            color: #e0f2fe;
+            font-weight: 400;
             position: relative;
             z-index: 2;
         }
@@ -74,154 +67,136 @@
             padding: 2rem;
         }
         
-        .warning-box {
-            background: linear-gradient(45deg, #ff4757, #ff3838);
+        .alert {
+            background: linear-gradient(135deg, #fee2e2, #fecaca);
+            border: 1px solid #f87171;
             padding: 1.5rem;
-            border-radius: 15px;
+            border-radius: 12px;
             margin: 2rem 0;
-            border: 3px solid #ff6b35;
-            box-shadow: 0 15px 35px rgba(255, 71, 87, 0.4);
-            animation: pulse 2s infinite;
+            box-shadow: 0 4px 12px rgba(248, 113, 113, 0.1);
         }
         
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.02); }
+        .alert h2 {
+            color: #dc2626;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
         }
         
-        .warning-box h2 {
-            color: #fff;
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        .alert p {
+            color: #7f1d1d;
+            font-weight: 500;
         }
         
         .section {
-            background: rgba(255, 255, 255, 0.05);
+            background: white;
             margin: 2rem 0;
             padding: 2rem;
-            border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            border-radius: 16px;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.05);
             transition: all 0.3s ease;
         }
         
         .section:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 25px 50px rgba(0,0,0,0.4);
-            border-color: #ff6b35;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            border-color: #3b82f6;
         }
         
         .section h2 {
-            color: #ff6b35;
-            font-size: 2.2rem;
+            color: #1e40af;
+            font-size: 1.8rem;
             margin-bottom: 1.5rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-            border-bottom: 3px solid #ff6b35;
+            font-weight: 600;
+            border-bottom: 2px solid #3b82f6;
             padding-bottom: 0.5rem;
         }
         
         .phase {
-            background: linear-gradient(135deg, rgba(255, 107, 53, 0.1), rgba(247, 147, 30, 0.1));
+            background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
             padding: 1.5rem;
             margin: 1.5rem 0;
-            border-radius: 15px;
-            border-left: 5px solid #ff6b35;
+            border-radius: 12px;
+            border-left: 4px solid #3b82f6;
             transition: all 0.3s ease;
         }
         
         .phase:hover {
-            background: linear-gradient(135deg, rgba(255, 107, 53, 0.2), rgba(247, 147, 30, 0.2));
-            transform: translateX(10px);
+            background: linear-gradient(135deg, #e0f2fe, #bae6fd);
+            transform: translateX(8px);
         }
         
         .phase h3 {
-            color: #ffd23f;
-            font-size: 1.5rem;
+            color: #0c4a6e;
+            font-size: 1.3rem;
             margin-bottom: 1rem;
+            font-weight: 600;
+        }
+        
+        .phase ul {
+            padding-left: 1.5rem;
+            color: #334155;
+        }
+        
+        .phase li {
+            margin-bottom: 0.5rem;
         }
         
         .exploit-box {
-            background: linear-gradient(45deg, #2ecc71, #27ae60);
+            background: linear-gradient(135deg, #f0fdf4, #dcfce7);
+            border: 1px solid #22c55e;
             padding: 1.5rem;
             margin: 1rem 0;
-            border-radius: 10px;
-            border: 2px solid #1abc9c;
-            box-shadow: 0 10px 20px rgba(46, 204, 113, 0.3);
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(34, 197, 94, 0.1);
         }
         
         .exploit-box h4 {
-            color: #fff;
-            font-size: 1.3rem;
+            color: #15803d;
+            font-size: 1.2rem;
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .exploit-box ul, .exploit-box ol {
+            color: #166534;
+            padding-left: 1.5rem;
+        }
+        
+        .exploit-box li {
             margin-bottom: 0.5rem;
         }
         
         .code-box {
-            background: #1a1a1a;
-            padding: 1rem;
+            background: #1e293b;
+            color: #e2e8f0;
+            padding: 1.5rem;
             border-radius: 8px;
-            font-family: 'Courier New', monospace;
-            color: #00ff00;
-            border: 1px solid #333;
+            font-family: 'JetBrains Mono', 'Fira Code', monospace;
+            font-size: 0.9rem;
             margin: 1rem 0;
             overflow-x: auto;
+            border: 1px solid #374151;
+            line-height: 1.5;
         }
         
-        .power-meter {
-            width: 100%;
-            height: 30px;
-            background: linear-gradient(90deg, #ff4757, #ff6b35, #ffd23f, #2ecc71);
-            border-radius: 15px;
-            margin: 1rem 0;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-            animation: powerFlow 2s ease-in-out infinite alternate;
+        .code-box strong {
+            color: #60a5fa;
         }
         
-        @keyframes powerFlow {
-            0% { filter: brightness(1); }
-            100% { filter: brightness(1.3); }
-        }
-        
-        .cheat-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-            margin: 2rem 0;
-        }
-        
-        .cheat-card {
-            background: linear-gradient(135deg, rgba(0,0,0,0.8), rgba(45, 27, 105, 0.6));
-            padding: 1.5rem;
-            border-radius: 15px;
-            border: 2px solid #ff6b35;
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-        
-        .cheat-card:hover {
-            transform: scale(1.05);
-            box-shadow: 0 15px 30px rgba(255, 107, 53, 0.4);
-        }
-        
-        .cheat-card h3 {
-            color: #ff6b35;
-            margin-bottom: 1rem;
-        }
-        
-        .progress-bar {
-            width: 100%;
-            height: 20px;
-            background: #333;
-            border-radius: 10px;
+        .progress-container {
+            background: #f1f5f9;
+            height: 8px;
+            border-radius: 4px;
+            margin: 1.5rem 0;
             overflow: hidden;
-            margin: 1rem 0;
         }
         
         .progress-fill {
             height: 100%;
-            background: linear-gradient(90deg, #ff6b35, #ffd23f);
-            border-radius: 10px;
+            background: linear-gradient(90deg, #3b82f6, #1e40af);
+            border-radius: 4px;
             animation: progressFill 3s ease-out forwards;
         }
         
@@ -230,572 +205,488 @@
             100% { width: 100%; }
         }
         
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.1);
+            border-color: #3b82f6;
+        }
+        
+        .card h3 {
+            color: #1e40af;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+        
+        .card p {
+            color: #64748b;
+            margin-bottom: 0.5rem;
+        }
+        
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0.5rem;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, #3b82f6, #1e40af);
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2rem;
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
+            margin-left: 1rem;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -2rem;
+            top: 1.5rem;
+            width: 12px;
+            height: 12px;
+            background: #3b82f6;
+            border-radius: 50%;
+            border: 3px solid white;
+            box-shadow: 0 0 0 3px #3b82f6;
+        }
+        
+        .timeline-item h4 {
+            color: #1e40af;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
         .footer {
             text-align: center;
-            padding: 2rem;
-            background: rgba(0,0,0,0.8);
+            padding: 3rem 2rem;
+            background: linear-gradient(135deg, #1e293b, #374151);
+            color: white;
             margin-top: 3rem;
+        }
+        
+        .footer h2 {
+            margin-bottom: 1rem;
+            color: #e2e8f0;
+        }
+        
+        .footer p {
+            color: #94a3b8;
+            max-width: 600px;
+            margin: 0 auto;
         }
         
         .btn {
             display: inline-block;
-            padding: 1rem 2rem;
-            background: linear-gradient(45deg, #ff6b35, #f7931e);
+            padding: 0.75rem 1.5rem;
+            background: linear-gradient(135deg, #3b82f6, #1e40af);
             color: white;
             text-decoration: none;
-            border-radius: 25px;
-            font-weight: bold;
+            border-radius: 8px;
+            font-weight: 500;
             transition: all 0.3s ease;
-            box-shadow: 0 10px 20px rgba(255, 107, 53, 0.3);
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
         }
         
         .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 30px rgba(255, 107, 53, 0.5);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(59, 130, 246, 0.4);
+        }
+        
+        .warning {
+            background: linear-gradient(135deg, #fef3c7, #fde68a);
+            border: 1px solid #f59e0b;
+            border-radius: 12px;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+        
+        .warning h4 {
+            color: #92400e;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .warning p {
+            color: #78350f;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .container {
+                padding: 1rem;
+            }
+            
+            .section {
+                padding: 1.5rem;
+            }
+            
+            .grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Animation d'entrée */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+        
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
     </style>
 </head>
 <body>
     <div class="header">
-        <h1>🚀 PROMINENCE II SPEEDRUN GUIDE 🚀</h1>
-        <p>Deviens le maître ultime en temps record !</p>
+        <h1>📚 Prominence II - Guide Speedrun</h1>
+        <p>Stratégies optimisées pour une progression rapide et efficace</p>
     </div>
 
     <div class="container">
-        <div class="warning-box">
-            <h2>⚡ ATTENTION : GUIDE ULTRA-OPTIMISÉ ⚡</h2>
-            <p>Ce guide contient les techniques les plus efficaces pour dominer Prominence II Austera Era le plus rapidement possible. Prépare-toi à une ascension fulgurante vers la toute-puissance !</p>
+        <div class="alert">
+            <h2>🎯 Guide Optimisé</h2>
+            <p>Ce guide présente les techniques les plus efficaces pour progresser rapidement dans Prominence II Austera Era, avec des stratégies testées et approuvées pour le multijoueur.</p>
         </div>
 
-        <div class="power-meter"></div>
-
-        <div class="section">
-            <h2>🎯 STRATÉGIE GLOBALE DE DOMINATION</h2>
+        <div class="section fade-in">
+            <h2>🚀 Stratégie Globale</h2>
             
             <div class="phase">
-                <h3>Phase 1 : Survie Express (0-2h)</h3>
+                <h3>Phase 1 : Fondations (0-2h)</h3>
                 <p><strong>Objectif :</strong> Établir une base sécurisée avec les ressources essentielles</p>
                 <ul>
-                    <li>Spawn près d'un village si possible (re-créer le monde jusqu'à trouver)</li>
-                    <li>Priorité absolue : nourriture, bois, pierre, fer</li>
-                    <li>Créer immédiatement un lit et établir un spawn point</li>
-                    <li>Construire une base temporaire underground pour éviter les mobs hostiles</li>
+                    <li>Localiser un village proche du spawn (recommencer si nécessaire)</li>
+                    <li>Sécuriser nourriture, bois, pierre et fer en priorité</li>
+                    <li>Établir un point de spawn avec un lit</li>
+                    <li>Construire un abri souterrain temporaire</li>
                 </ul>
             </div>
 
             <div class="phase">
-                <h3>Phase 2 : Tech Rush (2-6h)</h3>
-                <p><strong>Objectif :</strong> Accéder rapidement aux technologies de base</p>
+                <h3>Phase 2 : Développement Technologique (2-6h)</h3>
+                <p><strong>Objectif :</strong> Accéder aux technologies de base</p>
                 <ul>
-                    <li>Rush vers Thermal Expansion dès que possible</li>
-                    <li>Créer des machines de base : Pulverizer, Furnace, Compactor</li>
-                    <li>Établir un système d'énergie RF basique</li>
+                    <li>Prioriser Thermal Expansion pour l'automatisation</li>
+                    <li>Installer Pulverizer, Furnace et Compactor</li>
+                    <li>Mettre en place un système énergétique RF</li>
                     <li>Automatiser la production de ressources de base</li>
                 </ul>
             </div>
 
             <div class="phase">
-                <h3>Phase 3 : Magie + Tech (6-12h)</h3>
-                <p><strong>Objectif :</strong> Combiner magie et technologie pour un boost massif</p>
+                <h3>Phase 3 : Intégration Magie-Tech (6-12h)</h3>
+                <p><strong>Objectif :</strong> Combiner magie et technologie</p>
                 <ul>
                     <li>Débloquer Ars Nouveau pour les sorts utilitaires</li>
-                    <li>Créer des sorts de minage et de déplacement</li>
-                    <li>Upgrader vers Mekanism pour une production massive</li>
-                    <li>Établir des fermes automatisées</li>
+                    <li>Développer des sorts de minage et téléportation</li>
+                    <li>Évoluer vers Mekanism pour la production massive</li>
+                    <li>Établir des fermes entièrement automatisées</li>
                 </ul>
             </div>
         </div>
 
-        <div class="section">
-            <h2>🎯 GUIDE DÉTAILLÉ - SERVEUR EN LIGNE</h2>
+        <div class="section fade-in">
+            <h2>⚡ Guide Détaillé - Multijoueur</h2>
             
-            <div class="warning-box" style="background: linear-gradient(45deg, #e74c3c, #c0392b);">
-                <h2>⚠️ SPÉCIAL SERVEUR MULTIJOUEUR ⚠️</h2>
-                <p>Techniques adaptées aux serveurs avec protection anti-grief et économie. Toutes les méthodes ci-dessous sont 100% légales sur serveur !</p>
+            <div class="warning">
+                <h4>💡 Serveur Multijoueur</h4>
+                <p>Toutes les techniques présentées sont compatibles avec les protections anti-grief et les systèmes d'économie serveur.</p>
             </div>
 
-            <div class="phase">
-                <h3>🏃‍♂️ ÉTAPE 1 : SPAWN OPTIMISÉ (0-30min)</h3>
-                <div class="exploit-box">
-                    <h4>Actions immédiates au spawn :</h4>
-                    <ol>
-                        <li><strong>Tape /spawn</strong> pour voir où tu es</li>
-                        <li><strong>Regarde autour</strong> - cherche des structures proches (villages, donjons)</li>
-                        <li><strong>Si pas de village visible :</strong> marche 200-500 blocs dans chaque direction</li>
-                        <li><strong>Dès que tu vois un village :</strong> cours-y directement</li>
-                        <li><strong>Dans le village :</strong>
-                            <ul>
-                                <li>Pille TOUS les coffres (nourriture prioritaire)</li>
-                                <li>Récolte TOUTES les cultures</li>
-                                <li>Prends le lit d'un villageois</li>
-                                <li>Construit un abri temporaire à côté</li>
-                            </ul>
-                        </li>
-                    </ol>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <h4>🏃‍♂️ Spawn Optimisé (0-30min)</h4>
+                    <div class="exploit-box">
+                        <h4>Actions prioritaires :</h4>
+                        <ol>
+                            <li>Utiliser <code>/spawn</code> pour s'orienter</li>
+                            <li>Explorer dans un rayon de 500 blocs pour localiser un village</li>
+                            <li>Récolter toutes les ressources disponibles dans le village</li>
+                            <li>Établir un abri temporaire sécurisé</li>
+                        </ol>
+                    </div>
                 </div>
-            </div>
 
-            <div class="phase">
-                <h3>⛏️ ÉTAPE 2 : RUSH RESSOURCES (30min-2h)</h3>
-                <div class="exploit-box">
-                    <h4>Séquence de minage optimisée :</h4>
-                    <ol>
-                        <li><strong>Craft :</strong> Pioche en bois → Pierre → Fer IMMÉDIATEMENT</li>
-                        <li><strong>Y=12 mining :</strong> Creuse à Y=12 avec la technique "strip mining"</li>
-                        <li><strong>Pattern de minage :</strong>
-                            <div class="code-box">
-Tunnel principal de 2 blocs de haut
-Tous les 3 blocs, creuse un tunnel perpendiculaire
-Longueur tunnels : 20-30 blocs chacun
-                            </div>
-                        </li>
-                        <li><strong>Objectifs quantités MINIMUM :</strong>
-                            <ul>
-                                <li>64 Iron Ore</li>
-                                <li>32 Gold Ore</li>
-                                <li>16 Diamonds</li>
-                                <li>128 Coal</li>
-                                <li>32 Redstone</li>
-                            </ul>
-                        </li>
-                    </ol>
+                <div class="timeline-item">
+                    <h4>⛏️ Collecte de Ressources (30min-2h)</h4>
+                    <div class="exploit-box">
+                        <h4>Stratégie de minage :</h4>
+                        <div class="code-box">
+Niveau Y=12 - Strip mining
+Pattern : Tunnel principal 2 blocs hauteur
+Branches perpendiculaires tous les 3 blocs
+Longueur optimale : 20-30 blocs par branche
+                        </div>
+                        <p><strong>Objectifs quantitatifs :</strong></p>
+                        <ul>
+                            <li>64 Iron Ore minimum</li>
+                            <li>32 Gold Ore</li>
+                            <li>16 Diamonds</li>
+                            <li>128 Coal</li>
+                        </ul>
+                    </div>
                 </div>
-            </div>
 
-            <div class="phase">
-                <h3>🔧 ÉTAPE 3 : TECH SETUP RAPIDE (2h-4h)</h3>
-                <div class="exploit-box">
-                    <h4>Thermal Expansion - Setup exact :</h4>
-                    <ol>
-                        <li><strong>Craft dans cet ordre :</strong>
-                            <div class="code-box">
-1. Machine Frame (8 Iron + 1 Glass)
-2. Redstone Furnace 
+                <div class="timeline-item">
+                    <h4>🔧 Configuration Technologique (2h-4h)</h4>
+                    <div class="exploit-box">
+                        <h4>Setup Thermal Expansion :</h4>
+                        <div class="code-box">
+Ordre de craft prioritaire :
+1. Machine Frame
+2. Redstone Furnace
 3. Pulverizer
 4. Leadstone Energy Cell
 5. Steam Dynamo
-                            </div>
-                        </li>
-                        <li><strong>Placement optimal :</strong>
-                            <ul>
-                                <li>Steam Dynamo au centre</li>
-                                <li>Energy Cell à côté</li>
-                                <li>Machines en ligne face au cell</li>
-                                <li>Conduits d'énergie pour connecter</li>
-                            </ul>
-                        </li>
-                        <li><strong>Premier objectif :</strong> Doubler tes minerais avec le Pulverizer</li>
-                    </ol>
-                </div>
-            </div>
-
-            <div class="phase">
-                <h3>✨ ÉTAPE 4 : MAGIE RUSH (4h-6h)</h3>
-                <div class="exploit-box">
-                    <h4>Ars Nouveau - Progression express :</h4>
-                    <ol>
-                        <li><strong>Trouve un Archwood Tree</strong> (biome magical forest)</li>
-                        <li><strong>Craft :</strong>
-                            <div class="code-box">
-1. Novice Spell Book
-2. Scribes Table
-3. Source Jar (pour mana)
-4. Imbuement Chamber
-                            </div>
-                        </li>
-                        <li><strong>Premiers sorts ESSENTIELS :</strong>
-                            <ul>
-                                <li><strong>Break :</strong> Casse les blocs à distance</li>
-                                <li><strong>Harvest :</strong> Récolte automatique</li>
-                                <li><strong>Light :</strong> Éclairage permanent</li>
-                            </ul>
-                        </li>
-                        <li><strong>Setup mana :</strong> Source Berry farm pour mana infinie</li>
-                    </ol>
+                        </div>
+                        <p><strong>Disposition optimale :</strong> Dynamo central, Energy Cell adjacent, machines connectées via conduits</p>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <div class="section">
-            <h2>💰 TECHNIQUES SERVEUR SPÉCIFIQUES</h2>
+        <div class="section fade-in">
+            <h2>🎨 Techniques Spécialisées</h2>
             
-            <div class="cheat-grid">
-                <div class="cheat-card">
-                    <h3>📈 Trading Exploits</h3>
-                    <p><strong>Villager Trading Loop :</strong></p>
+            <div class="grid">
+                <div class="card">
+                    <h3>📈 Optimisation Commerce</h3>
+                    <p><strong>Trading Villageois :</strong></p>
                     <div class="code-box">
-1. Trouve un villager Librarian
-2. Casse/replace son pupitre jusqu'à avoir Mending
-3. Trade pour XP + books
-4. Reset avec d'autres villagers
+1. Librarian pour enchantements
+2. Reset métier via destruction/placement
+3. Focus sur Mending et Unbreaking
+4. Cycle avec plusieurs villageois
                     </div>
-                    <p>Résultat : Enchants puissants en masse</p>
                 </div>
 
-                <div class="cheat-card">
-                    <h3>🏭 Auto-Farm Setup</h3>
-                    <p><strong>Industrial Foregoing Farm :</strong></p>
+                <div class="card">
+                    <h3>🏭 Fermes Automatisées</h3>
+                    <p><strong>Industrial Foregoing :</strong></p>
                     <div class="code-box">
-1. Plant Gatherer + Plant Sower
-2. Connecte avec Item Conduits
-3. Power avec RF
-4. Setup carotte/pomme de terre = food infinie
+Plant Gatherer + Plant Sower
+Connexion via Item Conduits
+Alimentation RF stable
+Cultures recommandées : carotte/pomme de terre
                     </div>
-                    <p>Résultat : Nourriture automatique</p>
                 </div>
 
-                <div class="cheat-card">
-                    <h3>⚡ Mekanism Power Loop</h3>
-                    <p><strong>Setup d'énergie massive :</strong></p>
+                <div class="card">
+                    <h3>⚡ Production Énergétique</h3>
+                    <p><strong>Boucle Mekanism :</strong></p>
                     <div class="code-box">
-1. Heat Generator + Lava
-2. Energy Cube (Ultimate)
-3. Cable réseau pour distribution
-4. Upgrade vers Gas-Burning Generator
+Heat Generator + source de lave
+Energy Cube pour stockage
+Gas-Burning Generator pour upgrade
+Distribution via Universal Cables
                     </div>
-                    <p>Résultat : RF illimité</p>
                 </div>
 
-                <div class="cheat-card">
-                    <h3>🎯 Mob Farm Efficace</h3>
-                    <p><strong>Spawner + Industrial Foregoing :</strong></p>
+                <div class="card">
+                    <h3>🎯 Ferme à Monstres</h3>
+                    <p><strong>Setup Industrial Foregoing :</strong></p>
                     <div class="code-box">
-1. Trouve un spawner naturel
-2. Mob Crusher autour
-3. Conveyor Belts pour transport
-4. Item collector pour drops
+Spawner naturel + Mob Crusher
+Conveyor Belts pour transport
+Item Collector pour récupération
+Upgrades : Vitesse, Efficacité, Looting
                     </div>
-                    <p>Résultat : XP + items en continu</p>
                 </div>
             </div>
         </div>
 
-        <div class="section">
-            <h2>🎮 COMMANDES SERVEUR UTILES</h2>
-            
-            <div class="code-box">
-/home set [nom] - Créer un point de téléportation
-/spawn - Retour au spawn
-/tpa [joueur] - Demande de téléportation
-/bal - Voir ton argent (si économie)
-/shop - Ouvrir le shop serveur
-/claims - Voir tes protections
-/sethome - Point de respawn personnel
-            </div>
-            
-            <div class="exploit-box">
-                <h4>🏆 Stratégies Multijoueur</h4>
-                <ul>
-                    <li><strong>Claims :</strong> Protège ta base IMMÉDIATEMENT</li>
-                    <li><strong>Trading :</strong> Échange avec autres joueurs pour ressources rares</li>
-                    <li><strong>Alliances :</strong> Forme des équipes pour gros projets</li>
-                    <li><strong>Shop :</strong> Vends tes surplus pour acheter ce qui manque</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="section">
-            <h2>⚡ TECHNIQUES AVANCÉES DÉTAILLÉES</h2>
+        <div class="section fade-in">
+            <h2>🛠️ Intégration ComputerCraft</h2>
             
             <div class="phase">
-                <h3>🔥 DUPE GLITCH - Refined Storage (FONCTIONNE 2024)</h3>
+                <h3>💻 Configuration de Base</h3>
                 <div class="exploit-box">
-                    <h4>Étapes exactes :</h4>
-                    <ol>
-                        <li><strong>Matériel requis :</strong>
-                            <div class="code-box">
-- 1 Refined Storage Controller
-- 2 Storage Drives (1K minimum)
-- 1 Crafting Grid
-- 1 Cable
-- Items à dupliquer
-                            </div>
-                        </li>
-                        <li><strong>Setup :</strong>
-                            <ul>
-                                <li>Place le Controller</li>
-                                <li>Connecte 1 Drive avec cable</li>
-                                <li>Place la Crafting Grid</li>
-                                <li>Met tes items dans le système</li>
-                            </ul>
-                        </li>
-                        <li><strong>Exploit :</strong>
-                            <div class="code-box">
-1. Prends un stack d'items du système
-2. Disconnecte rapidement le cable du drive
-3. Reconnecte immédiatement 
-4. Check ton inventaire = items dupliqués !
-                            </div>
-                        </li>
-                        <li><strong>⚠️ TIMING CRITIQUE :</strong> Disconnect/reconnect en moins de 0.5 sec</li>
-                    </ol>
+                    <h4>Composants essentiels :</h4>
+                    <ul>
+                        <li>Computer (Redstone + Stone + Glass)</li>
+                        <li>Mining Turtles pour automatisation</li>
+                        <li>Wireless Modems pour communication</li>
+                        <li>Monitor pour interface utilisateur</li>
+                    </ul>
                 </div>
             </div>
 
             <div class="phase">
-                <h3>⚡ ÉNERGIE INFINIE - Mekanism Gas Loop</h3>
-                <div class="exploit-box">
-                    <h4>Setup EXACT (Testé 100% fonctionnel) :</h4>
-                    <ol>
-                        <li><strong>Composants nécessaires :</strong>
-                            <div class="code-box">
-- 1 Electrolytic Separator  
-- 1 Gas-Burning Generator
-- 2 Basic Gas Tanks
-- Water source infinie
-- Universal Cables
-                            </div>
-                        </li>
-                        <li><strong>Assemblage :</strong>
-                            <ul>
-                                <li>Separator produit Hydrogen du Water</li>
-                                <li>Hydrogen → Gas Tank → Generator</li>
-                                <li>Generator power → Separator</li>
-                                <li>Surplus power → tes machines</li>
-                            </ul>
-                        </li>
-                        <li><strong>Calcul d'efficacité :</strong>
-                            <div class="code-box">
-Input: 400 RF/t pour séparer l'eau
-Output: 800 RF/t du générateur à hydrogène
-Net gain: +400 RF/t INFINI !
-                            </div>
-                        </li>
-                    </ol>
-                </div>
-            </div>
-
-            <div class="phase">
-                <h3>🌟 XP FARM ULTIME - Detailed Setup</h3>
-                <div class="exploit-box">
-                    <h4>Industrial Foregoing Mob Farm (2000+ XP/min) :</h4>
-                    <ol>
-                        <li><strong>Composants requis :</strong>
-                            <div class="code-box">
-- 1 Mob Crusher
-- 4-8 Conveyor Belts  
-- 1 Item Collector
-- 1 Mob Spawner (trouvé naturellement)
-- Redstone controls
-- Energy source
-                            </div>
-                        </li>
-                        <li><strong>Construction étape par étape :</strong>
-                            <ul>
-                                <li><strong>Étape 1 :</strong> Trouve un spawner de skeleton/zombie</li>
-                                <li><strong>Étape 2 :</strong> Creuse une chambre 9x9x4 autour</li>
-                                <li><strong>Étape 3 :</strong> Place Conveyor Belts vers le centre</li>
-                                <li><strong>Étape 4 :</strong> Mob Crusher au point de convergence</li>
-                                <li><strong>Étape 5 :</strong> Item Collector en dessous</li>
-                            </ul>
-                        </li>
-                        <li><strong>Optimisation :</strong>
-                            <div class="code-box">
-- Speed Upgrade dans le Crusher
-- Efficiency Upgrade pour moins d'énergie  
-- Looting Upgrade pour plus de drops
-- XP Tap pour récupérer l'XP liquide
-                            </div>
-                        </li>
-                    </ol>
-                </div>
-            </div>
-
-            <div class="phase">
-                <h3>🚀 TELEPORT EXPLOIT - Ars Nouveau</h3>
-                <div class="exploit-box">
-                    <h4>Sort de Téléportation Longue Distance :</h4>
-                    <ol>
-                        <li><strong>Glyphes requis :</strong>
-                            <div class="code-box">
-- Projectile (pour la direction)
-- Extend Time (durée max)
-- Teleport (effet principal)  
-- Amplify (distance ++)
-                            </div>
-                        </li>
-                        <li><strong>Combinaison optimale :</strong>
-                            <div class="code-box">
-Projectile → Extend Time → Amplify → Teleport
-= Téléportation jusqu'à 500+ blocs !
-                            </div>
-                        </li>
-                        <li><strong>Coût en mana :</strong> ~2000 mana par cast</li>
-                        <li><strong>Usage :</strong> 
-                            <ul>
-                                <li>Vise la direction voulue</li>
-                                <li>Cast le sort</li>
-                                <li>Tu es téléporté instantanément</li>
-                                <li>Fonctionne à travers les murs !</li>
-                            </ul>
-                        </li>
-                    </ol>
-                </div>
-            </div>
-        </div>
-
-        <div class="section">
-            <h2>🎯 TIMELINE PRÉCISE - SERVEUR MULTIJOUEUR</h2>
-            
-            <div class="phase">
-                <h3>⏰ HEURE PAR HEURE - Planning Exact</h3>
+                <h3>🤖 Scripts d'Automatisation</h3>
                 <div class="code-box">
-<strong>H0-H1 : Survie de base</strong>
-- 0-15min : Spawn, trouve village, setup base temporaire
-- 15-30min : Première descente mining, iron tools
-- 30-60min : Strip mining Y=12, objectif 32 diamonds minimum
+-- Mining Turtle - Script de base
+function autoMine()
+  while turtle.detectDown() do
+    turtle.digDown()
+    turtle.down()
+  end
+  
+  -- Pattern de minage 3x3
+  for i = 1, 16 do
+    turtle.dig()
+    turtle.forward()
+    if i % 4 == 0 then
+      turtle.turnRight()
+    end
+  end
+end
 
-<strong>H1-H3 : Tech Foundation</strong>  
-- H1-H1.5 : Thermal Expansion machines de base
-- H1.5-H2 : Setup energy, automatise smelting
-- H2-H3 : Industrial Foregoing, première auto-farm
-
-<strong>H3-H6 : Magic + Advanced Tech</strong>
-- H3-H4 : Ars Nouveau setup, premiers sorts
-- H4-H5 : Mekanism, energy loop setup  
-- H5-H6 : Refined Storage, mass storage
-
-<strong>H6-H12 : Domination Phase</strong>
-- H6-H8 : Mob farms, XP automation
-- H8-H10 : Advanced machines, ore processing
-- H10-H12 : End-game equipment, final builds
-
-<strong>H12+ : God Mode</strong>
-- Toutes ressources en automatique
-- Téléportation partout instantanée
-- Équipement invincible
-- Production massive pour le serveur
+-- Exécution continue
+while true do
+  autoMine()
+  os.sleep(1)
+end
                 </div>
             </div>
         </div>
 
-        <div class="section">
-            <h2>📈 PROGRESSION TIMELINE OPTIMALE</h2>
+        <div class="section fade-in">
+            <h2>🏗️ Intégration Create Mod</h2>
             
-            <div class="progress-bar">
+            <div class="phase">
+                <h3>🔧 Systèmes Mécaniques</h3>
+                <div class="exploit-box">
+                    <h4>Composants de démarrage :</h4>
+                    <ul>
+                        <li>Water Wheel pour énergie de base</li>
+                        <li>Crushing Wheels pour doubler les minerais</li>
+                        <li>Mechanical Crafter pour automatisation</li>
+                        <li>Système de transport par train</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="phase">
+                <h3>🚂 Réseau de Transport</h3>
+                <div class="code-box">
+Configuration Train Automatique :
+┌─[Station A]─[Tracks]─[Station B]─┐
+│     ↓                      ↓     │
+│  [Cargo]              [Unload]   │
+│     ↓                      ↓     │
+└─[Schedule]──────────[Return]─────┘
+                </div>
+            </div>
+        </div>
+
+        <div class="section fade-in">
+            <h2>📊 Timeline de Progression</h2>
+            
+            <div class="progress-container">
                 <div class="progress-fill"></div>
             </div>
             
-            <p><strong>Heure 1 :</strong> Base sécurisée + outils de base</p>
-            <p><strong>Heure 3 :</strong> Machines Thermal + énergie stable</p>
-            <p><strong>Heure 6 :</strong> Mekanism de base + magie Ars Nouveau</p>
-            <p><strong>Heure 12 :</strong> Production automatisée + équipement intermédiaire</p>
-            <p><strong>Heure 24 :</strong> Build final + domination totale</p>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <h4>Heure 1 : Base Sécurisée</h4>
+                    <p>Établissement des fondations, outils de base, spawn sécurisé</p>
+                </div>
+                <div class="timeline-item">
+                    <h4>Heure 3 : Technologies de Base</h4>
+                    <p>Thermal Expansion opérationnel, énergie stable, automatisation initiale</p>
+                </div>
+                <div class="timeline-item">
+                    <h4>Heure 6 : Intégration Magie-Tech</h4>
+                    <p>Ars Nouveau + Mekanism, sorts utilitaires, production améliorée</p>
+                </div>
+                <div class="timeline-item">
+                    <h4>Heure 12 : Automatisation Avancée</h4>
+                    <p>ComputerCraft + Create, systèmes complexes, production massive</p>
+                </div>
+                <div class="timeline-item">
+                    <h4>Heure 24 : Maîtrise Complète</h4>
+                    <p>Réseau multi-bases, contrôle intelligent, domination serveur</p>
+                </div>
+            </div>
         </div>
 
-        <div class="section">
-            <h2>🎮 COMMANDES UTILES & ASTUCES</h2>
+        <div class="section fade-in">
+            <h2>🎮 Commandes Serveur Utiles</h2>
             
             <div class="code-box">
-/gamemode creative (si autorisé)
-/give @s minecraft:command_block
-/tp [coordonnées] (déplacement rapide)
-/time set day (éviter la nuit)
-/difficulty peaceful (pour setup tranquille)
+/home set [nom]    - Créer un point de téléportation
+/spawn            - Retourner au spawn
+/tpa [joueur]     - Demande de téléportation
+/bal              - Consulter son argent
+/shop             - Accéder au magasin
+/claims           - Gérer ses protections
+/sethome          - Définir son point de respawn
             </div>
             
-            <div class="exploit-box">
-                <h4>🔓 Bypass des Restrictions</h4>
-                <p>Certains serveurs limitent les commandes, mais tu peux souvent contourner avec :</p>
-                <ul>
-                    <li>Items de téléportation des mods</li>
-                    <li>Sorts de magie pour changer le temps</li>
-                    <li>Machines pour obtenir des items "interdits"</li>
-                </ul>
+            <div class="warning">
+                <h4>⚠️ Stratégies Multijoueur</h4>
+                <p>Protégez immédiatement votre base avec le système de claims, établissez des alliances stratégiques et utilisez le système économique pour accélérer votre progression.</p>
             </div>
-        </div>
-
-        <div class="section">
-            <h2>⚠️ POINTS CRITIQUES À RETENIR</h2>
-            <ul>
-                <li><strong>Sauvegarde régulière :</strong> Avant chaque exploit majeur</li>
-                <li><strong>Progression équilibrée :</strong> Ne néglige pas la défense</li>
-                <li><strong>Ressources clés :</strong> Diamonds, Netherite, materials rares des mods</li>
-                <li><strong>Automatisation :</strong> Plus c'est automatisé, plus tu progresses vite</li>
-                <li><strong>Magie + Tech :</strong> La combinaison est toujours plus puissante</li>
-            </ul>
         </div>
     </div>
 
     <div class="footer">
-        <h2>🏆 FÉLICITATIONS FUTUR MAÎTRE ! 🏆</h2>
-        <p>Avec ce guide, tu es maintenant équipé pour dominer Prominence II Austera Era !</p>
-        <p>Souviens-toi : la patience et la stratégie valent mieux que la précipitation.</p>
-        <div class="power-meter"></div>
+        <h2>🎯 Guide Complet</h2>
+        <p>Ce guide vous fournit une approche structurée et professionnelle pour maîtriser Prominence II Austera Era. Adaptez ces stratégies à votre style de jeu et aux spécificités de votre serveur.</p>
     </div>
 
     <script>
-        // Animation d'apparition des sections
-        const sections = document.querySelectorAll('.section, .phase, .cheat-card');
-        
+        // Animation d'apparition progressive
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.style.animation = 'fadeInUp 0.6s ease forwards';
+                    entry.target.classList.add('fade-in');
                 }
             });
+        }, observerOptions);
+
+        // Observer tous les éléments avec animation
+        document.querySelectorAll('.section, .phase, .card, .timeline-item').forEach(el => {
+            observer.observe(el);
         });
 
-        sections.forEach(section => {
-            observer.observe(section);
+        // Animation de la barre de progression au scroll
+        window.addEventListener('scroll', () => {
+            const scrollProgress = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight);
+            const progressBar = document.querySelector('.progress-fill');
+            if (progressBar) {
+                progressBar.style.width = `${Math.min(scrollProgress * 100, 100)}%`;
+            }
         });
-
-        // Animation CSS pour l'apparition
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes fadeInUp {
-                from {
-                    opacity: 0;
-                    transform: translateY(30px);
-                }
-                to {
-                    opacity: 1;
-                    transform: translateY(0);
-                }
-            }
-        `;
-        document.head.appendChild(style);
-
-        // Effet de particules dans le header
-        function createParticle() {
-            const particle = document.createElement('div');
-            particle.style.cssText = `
-                position: absolute;
-                width: 4px;
-                height: 4px;
-                background: #ffd23f;
-                border-radius: 50%;
-                top: ${Math.random() * 100}%;
-                left: ${Math.random() * 100}%;
-                animation: particle 3s linear infinite;
-                z-index: 1;
-            `;
-            
-            document.querySelector('.header').appendChild(particle);
-            
-            setTimeout(() => {
-                particle.remove();
-            }, 3000);
-        }
-
-        // Créer des particules périodiquement
-        setInterval(createParticle, 300);
-
-        // Animation des particules
-        const particleStyle = document.createElement('style');
-        particleStyle.textContent = `
-            @keyframes particle {
-                0% {
-                    opacity: 1;
-                    transform: translateY(0) scale(1);
-                }
-                100% {
-                    opacity: 0;
-                    transform: translateY(-100px) scale(0);
-                }
-            }
-        `;
-        document.head.appendChild(particleStyle);
     </script>
 </body>
 </html>
