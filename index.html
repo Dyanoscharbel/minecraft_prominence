@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prominence II - Guide Speedrun Ultime</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0c0c0c, #1a1a1a, #2d1b69);
+            color: #e0e0e0;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(45deg, #ff6b35, #f7931e, #ffd23f);
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(255, 107, 53, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: repeating-linear-gradient(
+                0deg,
+                transparent,
+                transparent 2px,
+                rgba(255,255,255,0.1) 2px,
+                rgba(255,255,255,0.1) 4px
+            );
+            animation: scan 3s linear infinite;
+        }
+        
+        @keyframes scan {
+            0% { transform: translateY(-100%); }
+            100% { transform: translateY(100%); }
+        }
+        
+        .header h1 {
+            font-size: 3.5rem;
+            font-weight: 900;
+            color: #000;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            margin-bottom: 0.5rem;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .header p {
+            font-size: 1.3rem;
+            color: #333;
+            font-weight: 600;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .warning-box {
+            background: linear-gradient(45deg, #ff4757, #ff3838);
+            padding: 1.5rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+            border: 3px solid #ff6b35;
+            box-shadow: 0 15px 35px rgba(255, 71, 87, 0.4);
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+        }
+        
+        .warning-box h2 {
+            color: #fff;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .section {
+            background: rgba(255, 255, 255, 0.05);
+            margin: 2rem 0;
+            padding: 2rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.4);
+            border-color: #ff6b35;
+        }
+        
+        .section h2 {
+            color: #ff6b35;
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            border-bottom: 3px solid #ff6b35;
+            padding-bottom: 0.5rem;
+        }
+        
+        .phase {
+            background: linear-gradient(135deg, rgba(255, 107, 53, 0.1), rgba(247, 147, 30, 0.1));
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 15px;
+            border-left: 5px solid #ff6b35;
+            transition: all 0.3s ease;
+        }
+        
+        .phase:hover {
+            background: linear-gradient(135deg, rgba(255, 107, 53, 0.2), rgba(247, 147, 30, 0.2));
+            transform: translateX(10px);
+        }
+        
+        .phase h3 {
+            color: #ffd23f;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .exploit-box {
+            background: linear-gradient(45deg, #2ecc71, #27ae60);
+            padding: 1.5rem;
+            margin: 1rem 0;
+            border-radius: 10px;
+            border: 2px solid #1abc9c;
+            box-shadow: 0 10px 20px rgba(46, 204, 113, 0.3);
+        }
+        
+        .exploit-box h4 {
+            color: #fff;
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .code-box {
+            background: #1a1a1a;
+            padding: 1rem;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            color: #00ff00;
+            border: 1px solid #333;
+            margin: 1rem 0;
+            overflow-x: auto;
+        }
+        
+        .power-meter {
+            width: 100%;
+            height: 30px;
+            background: linear-gradient(90deg, #ff4757, #ff6b35, #ffd23f, #2ecc71);
+            border-radius: 15px;
+            margin: 1rem 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            animation: powerFlow 2s ease-in-out infinite alternate;
+        }
+        
+        @keyframes powerFlow {
+            0% { filter: brightness(1); }
+            100% { filter: brightness(1.3); }
+        }
+        
+        .cheat-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .cheat-card {
+            background: linear-gradient(135deg, rgba(0,0,0,0.8), rgba(45, 27, 105, 0.6));
+            padding: 1.5rem;
+            border-radius: 15px;
+            border: 2px solid #ff6b35;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .cheat-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 30px rgba(255, 107, 53, 0.4);
+        }
+        
+        .cheat-card h3 {
+            color: #ff6b35;
+            margin-bottom: 1rem;
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 20px;
+            background: #333;
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 1rem 0;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #ff6b35, #ffd23f);
+            border-radius: 10px;
+            animation: progressFill 3s ease-out forwards;
+        }
+        
+        @keyframes progressFill {
+            0% { width: 0%; }
+            100% { width: 100%; }
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(0,0,0,0.8);
+            margin-top: 3rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: linear-gradient(45deg, #ff6b35, #f7931e);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 20px rgba(255, 107, 53, 0.3);
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(255, 107, 53, 0.5);
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🚀 PROMINENCE II SPEEDRUN GUIDE 🚀</h1>
+        <p>Deviens le maître ultime en temps record !</p>
+    </div>
+
+    <div class="container">
+        <div class="warning-box">
+            <h2>⚡ ATTENTION : GUIDE ULTRA-OPTIMISÉ ⚡</h2>
+            <p>Ce guide contient les techniques les plus efficaces pour dominer Prominence II Austera Era le plus rapidement possible. Prépare-toi à une ascension fulgurante vers la toute-puissance !</p>
+        </div>
+
+        <div class="power-meter"></div>
+
+        <div class="section">
+            <h2>🎯 STRATÉGIE GLOBALE DE DOMINATION</h2>
+            
+            <div class="phase">
+                <h3>Phase 1 : Survie Express (0-2h)</h3>
+                <p><strong>Objectif :</strong> Établir une base sécurisée avec les ressources essentielles</p>
+                <ul>
+                    <li>Spawn près d'un village si possible (re-créer le monde jusqu'à trouver)</li>
+                    <li>Priorité absolue : nourriture, bois, pierre, fer</li>
+                    <li>Créer immédiatement un lit et établir un spawn point</li>
+                    <li>Construire une base temporaire underground pour éviter les mobs hostiles</li>
+                </ul>
+            </div>
+
+            <div class="phase">
+                <h3>Phase 2 : Tech Rush (2-6h)</h3>
+                <p><strong>Objectif :</strong> Accéder rapidement aux technologies de base</p>
+                <ul>
+                    <li>Rush vers Thermal Expansion dès que possible</li>
+                    <li>Créer des machines de base : Pulverizer, Furnace, Compactor</li>
+                    <li>Établir un système d'énergie RF basique</li>
+                    <li>Automatiser la production de ressources de base</li>
+                </ul>
+            </div>
+
+            <div class="phase">
+                <h3>Phase 3 : Magie + Tech (6-12h)</h3>
+                <p><strong>Objectif :</strong> Combiner magie et technologie pour un boost massif</p>
+                <ul>
+                    <li>Débloquer Ars Nouveau pour les sorts utilitaires</li>
+                    <li>Créer des sorts de minage et de déplacement</li>
+                    <li>Upgrader vers Mekanism pour une production massive</li>
+                    <li>Établir des fermes automatisées</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>💀 EXPLOITS ET TECHNIQUES AVANCÉES</h2>
+            
+            <div class="cheat-grid">
+                <div class="cheat-card">
+                    <h3>🔥 Duplication d'Items</h3>
+                    <p>Utilise les bugs de certaines machines pour dupliquer les ressources rares. Fonctionne particulièrement bien avec les lingots précieux.</p>
+                    <div class="code-box">
+                        Astuce : Crash intentionnel pendant le transfert d'items
+                    </div>
+                </div>
+
+                <div class="cheat-card">
+                    <h3>⚡ Énergie Infinie</h3>
+                    <p>Créer des boucles d'énergie avec les générateurs Mekanism. Une fois mis en place, énergie illimitée garantie.</p>
+                    <div class="code-box">
+                        Setup : Generator → Energy Cube → Generator
+                    </div>
+                </div>
+
+                <div class="cheat-card">
+                    <h3>🌟 XP Farm Ultra-Rapide</h3>
+                    <p>Combine les spawners modifiés avec les systèmes de kill automatique pour un XP farming explosif.</p>
+                    <div class="code-box">
+                        Mob Spawner + Industrial Foregoing Killer
+                    </div>
+                </div>
+
+                <div class="cheat-card">
+                    <h3>🚀 Téléportation Instantanée</h3>
+                    <p>Maîtrise les sorts Ars Nouveau de téléportation pour te déplacer instantanément n'importe où.</p>
+                    <div class="code-box">
+                        Sort : Projectile + Teleport + Extend Time
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🏆 ÉQUIPEMENT ULTIME - BUILD DÉFINITIF</h2>
+            
+            <div class="exploit-box">
+                <h4>⚔️ Équipement de Combat Parfait</h4>
+                <p><strong>Épée :</strong> Tinkers' Construct avec Manyullyn + modificateurs de dégâts</p>
+                <p><strong>Armure :</strong> Mekanism MekaSuit entièrement upgradée</p>
+                <p><strong>Accessoires :</strong> Baubles magiques avec régénération et résistances</p>
+            </div>
+
+            <div class="exploit-box">
+                <h4>🔧 Setup de Production Automatisée</h4>
+                <p><strong>Minage :</strong> Quarry + Digital Miner (Mekanism) pour ressources infinies</p>
+                <p><strong>Énergie :</strong> Réacteurs Mekanism pour une puissance maximale</p>
+                <p><strong>Stockage :</strong> Refined Storage avec disques de stockage massif</p>
+            </div>
+
+            <div class="exploit-box">
+                <h4>✨ Magie Optimisée</h4>
+                <p><strong>Sorts Essentiels :</strong> Fortune III, Silk Touch, Téléportation, Vol</p>
+                <p><strong>Familier :</strong> Drygmy pour génération automatique de ressources</p>
+                <p><strong>Enchantements :</strong> Apotheosis pour des enchantements surpuissants</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>📈 PROGRESSION TIMELINE OPTIMALE</h2>
+            
+            <div class="progress-bar">
+                <div class="progress-fill"></div>
+            </div>
+            
+            <p><strong>Heure 1 :</strong> Base sécurisée + outils de base</p>
+            <p><strong>Heure 3 :</strong> Machines Thermal + énergie stable</p>
+            <p><strong>Heure 6 :</strong> Mekanism de base + magie Ars Nouveau</p>
+            <p><strong>Heure 12 :</strong> Production automatisée + équipement intermédiaire</p>
+            <p><strong>Heure 24 :</strong> Build final + domination totale</p>
+        </div>
+
+        <div class="section">
+            <h2>🎮 COMMANDES UTILES & ASTUCES</h2>
+            
+            <div class="code-box">
+/gamemode creative (si autorisé)
+/give @s minecraft:command_block
+/tp [coordonnées] (déplacement rapide)
+/time set day (éviter la nuit)
+/difficulty peaceful (pour setup tranquille)
+            </div>
+            
+            <div class="exploit-box">
+                <h4>🔓 Bypass des Restrictions</h4>
+                <p>Certains serveurs limitent les commandes, mais tu peux souvent contourner avec :</p>
+                <ul>
+                    <li>Items de téléportation des mods</li>
+                    <li>Sorts de magie pour changer le temps</li>
+                    <li>Machines pour obtenir des items "interdits"</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>⚠️ POINTS CRITIQUES À RETENIR</h2>
+            <ul>
+                <li><strong>Sauvegarde régulière :</strong> Avant chaque exploit majeur</li>
+                <li><strong>Progression équilibrée :</strong> Ne néglige pas la défense</li>
+                <li><strong>Ressources clés :</strong> Diamonds, Netherite, materials rares des mods</li>
+                <li><strong>Automatisation :</strong> Plus c'est automatisé, plus tu progresses vite</li>
+                <li><strong>Magie + Tech :</strong> La combinaison est toujours plus puissante</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="footer">
+        <h2>🏆 FÉLICITATIONS FUTUR MAÎTRE ! 🏆</h2>
+        <p>Avec ce guide, tu es maintenant équipé pour dominer Prominence II Austera Era !</p>
+        <p>Souviens-toi : la patience et la stratégie valent mieux que la précipitation.</p>
+        <div class="power-meter"></div>
+    </div>
+
+    <script>
+        // Animation d'apparition des sections
+        const sections = document.querySelectorAll('.section, .phase, .cheat-card');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 0.6s ease forwards';
+                }
+            });
+        });
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+
+        // Animation CSS pour l'apparition
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fadeInUp {
+                from {
+                    opacity: 0;
+                    transform: translateY(30px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Effet de particules dans le header
+        function createParticle() {
+            const particle = document.createElement('div');
+            particle.style.cssText = `
+                position: absolute;
+                width: 4px;
+                height: 4px;
+                background: #ffd23f;
+                border-radius: 50%;
+                top: ${Math.random() * 100}%;
+                left: ${Math.random() * 100}%;
+                animation: particle 3s linear infinite;
+                z-index: 1;
+            `;
+            
+            document.querySelector('.header').appendChild(particle);
+            
+            setTimeout(() => {
+                particle.remove();
+            }, 3000);
+        }
+
+        // Créer des particules périodiquement
+        setInterval(createParticle, 300);
+
+        // Animation des particules
+        const particleStyle = document.createElement('style');
+        particleStyle.textContent = `
+            @keyframes particle {
+                0% {
+                    opacity: 1;
+                    transform: translateY(0) scale(1);
+                }
+                100% {
+                    opacity: 0;
+                    transform: translateY(-100px) scale(0);
+                }
+            }
+        `;
+        document.head.appendChild(particleStyle);
+    </script>
+</body>
+</html>
