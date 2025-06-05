@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Prominence II - Guide Speedrun Professionnel</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Inter:wght@400;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -13,333 +14,426 @@
         
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            background: linear-gradient(135deg, #f8fafc, #e2e8f0);
-            color: #1e293b;
+            background: linear-gradient(135deg, #0a1026 0%, #1a237e 100%);
+            color: #e0e7ef;
             line-height: 1.7;
             overflow-x: hidden;
+            min-height: 100vh;
+            position: relative;
+        }
+        
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: url('https://www.transparenttextures.com/patterns/stardust.png'), radial-gradient(ellipse at 50% 0%, #1a237e 0%, #0a1026 100%);
+            opacity: 0.5;
+            z-index: 0;
+            pointer-events: none;
         }
         
         .header {
-            background: linear-gradient(135deg, #1e40af, #3b82f6, #60a5fa);
-            padding: 3rem 2rem;
+            background: linear-gradient(135deg, #0f172a 60%, #1e40af 100%);
+            padding: 4rem 2rem 2rem 2rem;
             text-align: center;
-            box-shadow: 0 4px 20px rgba(30, 64, 175, 0.15);
+            box-shadow: 0 4px 32px rgba(30, 64, 175, 0.25);
             position: relative;
             overflow: hidden;
+            border-bottom: 2px solid #3b82f6;
         }
         
-        .header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.1) 50%, transparent 70%);
-            animation: shine 3s ease-in-out infinite;
-        }
-        
-        @keyframes shine {
-            0%, 100% { transform: translateX(-100%); }
-            50% { transform: translateX(100%); }
+        .header img.hero {
+            width: 100%;
+            max-width: 700px;
+            margin: 0 auto 1.5rem auto;
+            display: block;
+            border-radius: 18px;
+            box-shadow: 0 0 32px 8px #3b82f6cc;
         }
         
         .header h1 {
-            font-size: 2.5rem;
+            font-family: 'Orbitron', 'Inter', sans-serif;
+            font-size: 3.5rem;
             font-weight: 700;
-            color: white;
-            margin-bottom: 0.5rem;
-            position: relative;
-            z-index: 2;
+            color: #fff;
+            letter-spacing: 0.08em;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 12px #60a5fa, 0 2px 8px #000a;
+            background: linear-gradient(90deg, #60a5fa, #a78bfa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
         
         .header p {
-            font-size: 1.1rem;
-            color: #e0f2fe;
-            font-weight: 400;
-            position: relative;
-            z-index: 2;
+            font-size: 1.4rem;
+            color: #a5b4fc;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 0 8px #1e40af;
         }
         
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 2rem;
+            position: relative;
+            z-index: 1;
         }
         
         .alert {
-            background: linear-gradient(135deg, #fee2e2, #fecaca);
-            border: 1px solid #f87171;
-            padding: 1.5rem;
-            border-radius: 12px;
+            background: linear-gradient(135deg, rgba(30, 64, 175, 0.1), rgba(59, 130, 246, 0.1));
+            border: 2px solid #3b82f6;
+            padding: 2rem;
+            border-radius: 16px;
             margin: 2rem 0;
-            box-shadow: 0 4px 12px rgba(248, 113, 113, 0.1);
+            box-shadow: 0 4px 24px rgba(59, 130, 246, 0.15);
+            backdrop-filter: blur(10px);
         }
         
         .alert h2 {
-            color: #dc2626;
-            font-size: 1.5rem;
-            margin-bottom: 0.5rem;
+            color: #60a5fa;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
             font-weight: 600;
+            text-shadow: 0 0 8px #3b82f6;
         }
         
         .alert p {
-            color: #7f1d1d;
+            color: #e0e7ef;
             font-weight: 500;
+            font-size: 1.1rem;
         }
         
         .section {
-            background: white;
-            margin: 2rem 0;
-            padding: 2rem;
-            border-radius: 16px;
-            border: 1px solid #e2e8f0;
-            box-shadow: 0 4px 16px rgba(0,0,0,0.05);
-            transition: all 0.3s ease;
+            background: rgba(10, 16, 38, 0.95);
+            margin: 3rem 0;
+            padding: 2.5rem;
+            border-radius: 20px;
+            border: 2px solid #3b82f6;
+            box-shadow: 0 4px 32px #1e40af66;
+            transition: all 0.3s cubic-bezier(.4,2,.6,1);
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
         }
         
         .section:hover {
+            box-shadow: 0 8px 40px #60a5fa99;
+            border-color: #60a5fa;
             transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-            border-color: #3b82f6;
         }
         
         .section h2 {
-            color: #1e40af;
-            font-size: 1.8rem;
-            margin-bottom: 1.5rem;
-            font-weight: 600;
-            border-bottom: 2px solid #3b82f6;
-            padding-bottom: 0.5rem;
+            font-family: 'Orbitron', 'Inter', sans-serif;
+            color: #60a5fa;
+            font-size: 2.4rem;
+            margin-bottom: 2rem;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            text-shadow: 0 0 12px #3b82f6, 0 2px 8px #000a;
         }
         
         .phase {
-            background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
-            padding: 1.5rem;
-            margin: 1.5rem 0;
-            border-radius: 12px;
-            border-left: 4px solid #3b82f6;
-            transition: all 0.3s ease;
+            background: linear-gradient(135deg, rgba(21, 28, 54, 0.95), rgba(30, 41, 59, 0.95));
+            padding: 2rem;
+            margin: 2rem 0;
+            border-radius: 16px;
+            border-left: 4px solid #60a5fa;
+            box-shadow: 0 4px 24px #60a5fa33;
+            transition: all 0.3s cubic-bezier(.4,2,.6,1);
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
         }
         
         .phase:hover {
-            background: linear-gradient(135deg, #e0f2fe, #bae6fd);
-            transform: translateX(8px);
+            box-shadow: 0 8px 32px #60a5fa99;
+            border-left: 4px solid #a78bfa;
+            transform: translateX(4px);
         }
         
         .phase h3 {
-            color: #0c4a6e;
-            font-size: 1.3rem;
-            margin-bottom: 1rem;
+            font-family: 'Orbitron', 'Inter', sans-serif;
+            color: #a78bfa;
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
             font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            text-shadow: 0 0 8px #a78bfa;
         }
         
-        .phase ul {
-            padding-left: 1.5rem;
-            color: #334155;
-        }
-        
-        .phase li {
-            margin-bottom: 0.5rem;
-        }
-        
-        .exploit-box {
-            background: linear-gradient(135deg, #f0fdf4, #dcfce7);
-            border: 1px solid #22c55e;
-            padding: 1.5rem;
-            margin: 1rem 0;
+        .guide-image {
+            width: 100%;
+            max-width: 600px;
+            height: auto;
             border-radius: 12px;
-            box-shadow: 0 2px 8px rgba(34, 197, 94, 0.1);
-        }
-        
-        .exploit-box h4 {
-            color: #15803d;
-            font-size: 1.2rem;
-            margin-bottom: 0.8rem;
-            font-weight: 600;
-        }
-        
-        .exploit-box ul, .exploit-box ol {
-            color: #166534;
-            padding-left: 1.5rem;
-        }
-        
-        .exploit-box li {
-            margin-bottom: 0.5rem;
-        }
-        
-        .code-box {
-            background: #1e293b;
-            color: #e2e8f0;
-            padding: 1.5rem;
-            border-radius: 8px;
-            font-family: 'JetBrains Mono', 'Fira Code', monospace;
-            font-size: 0.9rem;
             margin: 1rem 0;
-            overflow-x: auto;
-            border: 1px solid #374151;
-            line-height: 1.5;
+            box-shadow: 0 4px 24px #60a5fa55;
+            transition: transform 0.3s cubic-bezier(.4,2,.6,1);
         }
         
-        .code-box strong {
-            color: #60a5fa;
+        .guide-image:hover {
+            transform: scale(1.03);
         }
         
-        .progress-container {
-            background: #f1f5f9;
-            height: 8px;
-            border-radius: 4px;
-            margin: 1.5rem 0;
-            overflow: hidden;
-        }
-        
-        .progress-fill {
-            height: 100%;
-            background: linear-gradient(90deg, #3b82f6, #1e40af);
-            border-radius: 4px;
-            animation: progressFill 3s ease-out forwards;
-        }
-        
-        @keyframes progressFill {
-            0% { width: 0%; }
-            100% { width: 100%; }
+        .image-caption {
+            text-align: center;
+            color: #a5b4fc;
+            font-size: 0.95rem;
+            margin-top: 0.5rem;
+            font-style: italic;
         }
         
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 1.5rem;
-            margin: 2rem 0;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin: 2.5rem 0;
         }
         
         .card {
-            background: white;
-            padding: 1.5rem;
-            border-radius: 12px;
-            border: 1px solid #e2e8f0;
-            transition: all 0.3s ease;
+            background: rgba(20, 30, 60, 0.95);
+            padding: 2rem;
+            border-radius: 16px;
+            border: 2px solid #3b82f6;
+            transition: all 0.3s cubic-bezier(.4,2,.6,1);
             cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            color: #e0e7ef;
+            backdrop-filter: blur(10px);
         }
         
         .card:hover {
+            box-shadow: 0 8px 32px #60a5fa99;
+            border-color: #a78bfa;
             transform: translateY(-4px);
-            box-shadow: 0 12px 24px rgba(0,0,0,0.1);
-            border-color: #3b82f6;
         }
         
         .card h3 {
-            color: #1e40af;
-            margin-bottom: 1rem;
+            color: #60a5fa;
+            margin-bottom: 1.5rem;
             font-weight: 600;
+            font-size: 1.4rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            text-shadow: 0 0 8px #3b82f6;
         }
         
         .card p {
-            color: #64748b;
-            margin-bottom: 0.5rem;
+            color: #e0e7ef;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
         }
         
         .timeline {
             position: relative;
-            padding-left: 2rem;
+            padding-left: 2.5rem;
         }
         
         .timeline::before {
             content: '';
             position: absolute;
-            left: 0.5rem;
+            left: 0.8rem;
             top: 0;
             bottom: 0;
-            width: 2px;
+            width: 3px;
             background: linear-gradient(to bottom, #3b82f6, #1e40af);
+            border-radius: 3px;
         }
         
         .timeline-item {
             position: relative;
-            margin-bottom: 2rem;
-            background: white;
-            padding: 1.5rem;
-            border-radius: 12px;
-            border: 1px solid #e2e8f0;
-            margin-left: 1rem;
+            margin-bottom: 2.5rem;
+            background: rgba(20, 30, 60, 0.95);
+            padding: 2rem;
+            border-radius: 16px;
+            border: 2px solid #3b82f6;
+            margin-left: 1.5rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 24px #60a5fa33;
+            color: #e0e7ef;
+            backdrop-filter: blur(10px);
+        }
+        
+        .timeline-item:hover {
+            box-shadow: 0 8px 32px #60a5fa99;
+            border-color: #a78bfa;
+            transform: translateX(4px);
         }
         
         .timeline-item::before {
             content: '';
             position: absolute;
-            left: -2rem;
-            top: 1.5rem;
-            width: 12px;
-            height: 12px;
+            left: -2.5rem;
+            top: 2rem;
+            width: 16px;
+            height: 16px;
             background: #3b82f6;
             border-radius: 50%;
             border: 3px solid white;
-            box-shadow: 0 0 0 3px #3b82f6;
+            box-shadow: 0 0 0 4px #3b82f6;
         }
         
         .timeline-item h4 {
-            color: #1e40af;
+            color: #60a5fa;
             font-weight: 600;
-            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            text-shadow: 0 0 8px #3b82f6;
         }
         
         .footer {
             text-align: center;
-            padding: 3rem 2rem;
-            background: linear-gradient(135deg, #1e293b, #374151);
-            color: white;
-            margin-top: 3rem;
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, #0a1026 60%, #1e293b 100%);
+            color: #a5b4fc;
+            margin-top: 4rem;
+            position: relative;
+            overflow: hidden;
+            border-top: 2px solid #3b82f6;
         }
         
         .footer h2 {
-            margin-bottom: 1rem;
-            color: #e2e8f0;
+            font-family: 'Orbitron', 'Inter', sans-serif;
+            margin-bottom: 1.5rem;
+            color: #a78bfa;
+            position: relative;
+            z-index: 1;
+            text-shadow: 0 0 8px #a78bfa;
+            font-size: 2.2rem;
         }
         
         .footer p {
-            color: #94a3b8;
-            max-width: 600px;
+            color: #a5b4fc;
+            max-width: 700px;
             margin: 0 auto;
+            position: relative;
+            z-index: 1;
+            font-size: 1.1rem;
         }
         
         .btn {
             display: inline-block;
-            padding: 0.75rem 1.5rem;
-            background: linear-gradient(135deg, #3b82f6, #1e40af);
-            color: white;
+            padding: 1rem 2rem;
+            background: linear-gradient(90deg, #60a5fa, #a78bfa);
+            color: #fff;
             text-decoration: none;
-            border-radius: 8px;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+            border-radius: 12px;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            transition: all 0.3s cubic-bezier(.4,2,.6,1);
+            box-shadow: 0 4px 16px #60a5fa55;
+            border: 2px solid #60a5fa;
+            cursor: pointer;
+            text-shadow: 0 0 8px #3b82f6;
+            font-size: 1.1rem;
         }
         
         .btn:hover {
+            background: linear-gradient(90deg, #a78bfa, #60a5fa);
+            border-color: #a78bfa;
             transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(59, 130, 246, 0.4);
+            box-shadow: 0 6px 20px #60a5fa99;
         }
         
         .warning {
-            background: linear-gradient(135deg, #fef3c7, #fde68a);
-            border: 1px solid #f59e0b;
-            border-radius: 12px;
-            padding: 1rem;
-            margin: 1rem 0;
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.1), rgba(251, 191, 36, 0.1));
+            border: 2px solid #f59e0b;
+            border-radius: 16px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            backdrop-filter: blur(10px);
         }
         
         .warning h4 {
-            color: #92400e;
+            color: #fbbf24;
             font-weight: 600;
-            margin-bottom: 0.5rem;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+            text-shadow: 0 0 8px #f59e0b;
         }
         
         .warning p {
-            color: #78350f;
+            color: #fef3c7;
+            font-size: 1.1rem;
+        }
+        
+        .code-box {
+            background: rgba(10, 16, 38, 0.95);
+            color: #a5b4fc;
+            border: 2px solid #60a5fa;
+            box-shadow: 0 4px 24px #60a5fa33;
+            padding: 1.5rem;
+            border-radius: 12px;
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 1rem;
+            line-height: 1.6;
+            margin: 1rem 0;
+            backdrop-filter: blur(10px);
+        }
+        
+        .code-box strong {
+            color: #60a5fa;
+            font-weight: 600;
+        }
+        
+        .exploit-box {
+            background: rgba(20, 30, 60, 0.95);
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin: 1rem 0;
+            border: 2px solid #3b82f6;
+            backdrop-filter: blur(10px);
+        }
+        
+        .exploit-box h4 {
+            color: #60a5fa;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+            text-shadow: 0 0 8px #3b82f6;
+        }
+        
+        .exploit-box ul, .exploit-box ol {
+            padding-left: 1.5rem;
+            margin: 1rem 0;
+        }
+        
+        .exploit-box li {
+            margin-bottom: 0.5rem;
+            color: #e0e7ef;
+        }
+        
+        .progress-container {
+            width: 100%;
+            height: 4px;
+            background: rgba(59, 130, 246, 0.2);
+            border-radius: 2px;
+            margin: 2rem 0;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #60a5fa, #a78bfa);
+            width: 0;
+            transition: width 0.3s ease;
+            border-radius: 2px;
         }
         
         /* Responsive */
         @media (max-width: 768px) {
             .header h1 {
-                font-size: 2rem;
+                font-size: 2.2rem;
             }
             
             .container {
@@ -352,6 +446,19 @@
             
             .grid {
                 grid-template-columns: 1fr;
+            }
+            
+            .timeline {
+                padding-left: 1.5rem;
+            }
+            
+            .timeline-item {
+                padding: 1.5rem;
+            }
+            
+            .code-box {
+                font-size: 0.9rem;
+                padding: 1rem;
             }
         }
         
@@ -367,6 +474,102 @@
                 opacity: 1;
                 transform: translateY(0);
             }
+        }
+
+        .tutorial-box {
+            background: rgba(20, 30, 60, 0.95);
+            border: 2px solid #60a5fa;
+            border-radius: 16px;
+            padding: 2rem;
+            margin: 1.5rem 0;
+            box-shadow: 0 4px 24px #60a5fa33;
+            backdrop-filter: blur(10px);
+        }
+
+        .tutorial-box h4 {
+            color: #60a5fa;
+            font-size: 1.4rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            text-shadow: 0 0 8px #3b82f6;
+        }
+
+        .steps {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .step {
+            background: rgba(30, 41, 59, 0.95);
+            border-radius: 12px;
+            padding: 1.5rem;
+            border-left: 3px solid #60a5fa;
+        }
+
+        .step h5 {
+            color: #a78bfa;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .step ul, .step ol {
+            padding-left: 1.5rem;
+            margin: 0.5rem 0;
+        }
+
+        .step li {
+            color: #e0e7ef;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .craft-recipe {
+            background: rgba(10, 16, 38, 0.95);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            border: 1px solid #3b82f6;
+        }
+
+        .craft-recipe p {
+            color: #60a5fa;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .craft-recipe ul, .craft-recipe ol {
+            padding-left: 1.5rem;
+            margin: 0.5rem 0;
+        }
+
+        .craft-recipe li {
+            color: #e0e7ef;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        @media (max-width: 768px) {
+            .tutorial-box {
+                padding: 1.5rem;
+            }
+
+            .step {
+                padding: 1rem;
+            }
+
+            .craft-recipe {
+                padding: 1rem;
+            }
+        }
+
+        .craft-detail {
+            margin-top: 2rem;
         }
     </style>
 </head>
@@ -394,6 +597,38 @@
                     <li>Établir un point de spawn avec un lit</li>
                     <li>Construire un abri souterrain temporaire</li>
                 </ul>
+                <div class="tutorial-box">
+                    <h4>📝 Tutoriel : Base de Départ</h4>
+                    <div class="steps">
+                        <div class="step">
+                            <h5>Étape 1 : Exploration Initiale</h5>
+                            <ul>
+                                <li>Utilisez <code>/spawn</code> pour vous orienter</li>
+                                <li>Explorez dans un rayon de 500 blocs</li>
+                                <li>Notez les coordonnées des villages trouvés</li>
+                                <li>Repérez les biomes intéressants (plaines, forêt)</li>
+                            </ul>
+                        </div>
+                        <div class="step">
+                            <h5>Étape 2 : Collecte de Ressources</h5>
+                            <ul>
+                                <li>Récoltez 64 planches de bois</li>
+                                <li>Collectez 32 pierres</li>
+                                <li>Gagnez 16 pommes de terre/carottes</li>
+                                <li>Minez 32 charbons</li>
+                            </ul>
+                        </div>
+                        <div class="step">
+                            <h5>Étape 3 : Construction de Base</h5>
+                            <ul>
+                                <li>Creusez un trou 3x3x3</li>
+                                <li>Placez un lit et un coffre</li>
+                                <li>Créez un four et une table de craft</li>
+                                <li>Établissez un point de spawn</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <div class="phase">
@@ -405,6 +640,76 @@
                     <li>Mettre en place un système énergétique RF</li>
                     <li>Automatiser la production de ressources de base</li>
                 </ul>
+                <div class="craft-detail">
+                    <h4>🛠️ Setup Thermal Expansion</h4>
+                    <div class="code-box">
+                        <strong>Ordre de craft :</strong>
+                        1. Machine Frame
+                        2. Redstone Furnace
+                        3. Pulverizer
+                        4. Leadstone Energy Cell
+                        5. Steam Dynamo
+                    </div>
+                    <div class="tutorial-box">
+                        <h4>📝 Tutoriel : Thermal Expansion</h4>
+                        <div class="steps">
+                            <div class="step">
+                                <h5>Étape 1 : Machine Frame</h5>
+                                <div class="craft-recipe">
+                                    <p>Ressources nécessaires :</p>
+                                    <ul>
+                                        <li>4 Invar Ingots (2 Fer + 1 Nickel)</li>
+                                        <li>4 Redstone</li>
+                                        <li>1 Machine Block</li>
+                                    </ul>
+                                    <p>Ordre de craft :</p>
+                                    <ol>
+                                        <li>Créez d'abord les Invar Ingots</li>
+                                        <li>Placez les Invar Ingots dans les coins</li>
+                                        <li>Ajoutez le Redstone au centre</li>
+                                        <li>Complétez avec le Machine Block</li>
+                                    </ol>
+                                </div>
+                            </div>
+                            <div class="step">
+                                <h5>Étape 2 : Redstone Furnace</h5>
+                                <div class="craft-recipe">
+                                    <p>Ressources nécessaires :</p>
+                                    <ul>
+                                        <li>1 Machine Frame</li>
+                                        <li>4 Redstone</li>
+                                        <li>4 Glass</li>
+                                    </ul>
+                                    <p>Configuration :</p>
+                                    <ol>
+                                        <li>Placez la Machine Frame au centre</li>
+                                        <li>Ajoutez le Redstone pour l'activation</li>
+                                        <li>Installez les Glass pour la visibilité</li>
+                                        <li>Connectez à une source d'énergie RF</li>
+                                    </ol>
+                                </div>
+                            </div>
+                            <div class="step">
+                                <h5>Étape 3 : Pulverizer</h5>
+                                <div class="craft-recipe">
+                                    <p>Ressources nécessaires :</p>
+                                    <ul>
+                                        <li>1 Machine Frame</li>
+                                        <li>4 Redstone</li>
+                                        <li>4 Flint</li>
+                                    </ul>
+                                    <p>Optimisation :</p>
+                                    <ol>
+                                        <li>Placez près du Redstone Furnace</li>
+                                        <li>Connectez avec des Item Conduits</li>
+                                        <li>Ajoutez des upgrades de vitesse</li>
+                                        <li>Configurez l'auto-extraction</li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <div class="phase">
@@ -416,6 +721,44 @@
                     <li>Évoluer vers Mekanism pour la production massive</li>
                     <li>Établir des fermes entièrement automatisées</li>
                 </ul>
+                <div class="craft-detail">
+                    <h4>✨ Sorts Essentiels</h4>
+                    <div class="tutorial-box">
+                        <h4>📝 Tutoriel : Ars Nouveau</h4>
+                        <div class="steps">
+                            <div class="step">
+                                <h5>Étape 1 : Démarrage</h5>
+                                <div class="craft-recipe">
+                                    <p>Ressources initiales :</p>
+                                    <ul>
+                                        <li>4 Source Gems (grottes)</li>
+                                        <li>8 Arcane Stone</li>
+                                        <li>1 Arcane Core</li>
+                                    </ul>
+                                    <p>Premiers sorts :</p>
+                                    <ol>
+                                        <li>Créez une Source Jar</li>
+                                        <li>Fabriquez un Spell Book</li>
+                                        <li>Apprenez "Projectile"</li>
+                                        <li>Développez "Break Block"</li>
+                                    </ol>
+                                </div>
+                            </div>
+                            <div class="step">
+                                <h5>Étape 2 : Sorts Avancés</h5>
+                                <div class="craft-recipe">
+                                    <p>Sorts recommandés :</p>
+                                    <ul>
+                                        <li>Break Block + Projectile (minage)</li>
+                                        <li>Launch + Self (mouvement)</li>
+                                        <li>Heal + Self (survie)</li>
+                                        <li>Light + Projectile (éclairage)</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -439,6 +782,29 @@
                             <li>Établir un abri temporaire sécurisé</li>
                         </ol>
                     </div>
+                    <div class="tutorial-box">
+                        <h4>📝 Tutoriel : Protection de Base</h4>
+                        <div class="steps">
+                            <div class="step">
+                                <h5>Étape 1 : Claims</h5>
+                                <ul>
+                                    <li>Utilisez <code>/claim</code> pour créer un claim</li>
+                                    <li>Étendez avec <code>/claim expand</code></li>
+                                    <li>Protégez avec <code>/claim flag</code></li>
+                                    <li>Vérifiez avec <code>/claim info</code></li>
+                                </ul>
+                            </div>
+                            <div class="step">
+                                <h5>Étape 2 : Sécurité</h5>
+                                <ul>
+                                    <li>Activez <code>pvp=false</code></li>
+                                    <li>Définissez <code>greeting=Privé</code></li>
+                                    <li>Configurez <code>enter=message</code></li>
+                                    <li>Ajoutez des membres avec <code>/trust</code></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="timeline-item">
@@ -451,29 +817,38 @@ Pattern : Tunnel principal 2 blocs hauteur
 Branches perpendiculaires tous les 3 blocs
 Longueur optimale : 20-30 blocs par branche
                         </div>
-                        <p><strong>Objectifs quantitatifs :</strong></p>
-                        <ul>
-                            <li>64 Iron Ore minimum</li>
-                            <li>32 Gold Ore</li>
-                            <li>16 Diamonds</li>
-                            <li>128 Coal</li>
-                        </ul>
                     </div>
-                </div>
-
-                <div class="timeline-item">
-                    <h4>🔧 Configuration Technologique (2h-4h)</h4>
-                    <div class="exploit-box">
-                        <h4>Setup Thermal Expansion :</h4>
-                        <div class="code-box">
-Ordre de craft prioritaire :
-1. Machine Frame
-2. Redstone Furnace
-3. Pulverizer
-4. Leadstone Energy Cell
-5. Steam Dynamo
+                    <div class="tutorial-box">
+                        <h4>📝 Tutoriel : Mining Optimisé</h4>
+                        <div class="steps">
+                            <div class="step">
+                                <h5>Étape 1 : Préparation</h5>
+                                <ul>
+                                    <li>Créez 3 pioches en pierre</li>
+                                    <li>Préparez 64 torches</li>
+                                    <li>Emportez 16 escaliers</li>
+                                    <li>Gardez un coffre de stockage</li>
+                                </ul>
+                            </div>
+                            <div class="step">
+                                <h5>Étape 2 : Technique</h5>
+                                <ul>
+                                    <li>Creusez jusqu'à Y=12</li>
+                                    <li>Créez un tunnel principal</li>
+                                    <li>Ajoutez des branches tous les 3 blocs</li>
+                                    <li>Éclairez systématiquement</li>
+                                </ul>
+                            </div>
+                            <div class="step">
+                                <h5>Étape 3 : Optimisation</h5>
+                                <ul>
+                                    <li>Utilisez des échelles pour le retour</li>
+                                    <li>Marquez les intersections</li>
+                                    <li>Stockez les minerais précieux</li>
+                                    <li>Revenez régulièrement au spawn</li>
+                                </ul>
+                            </div>
                         </div>
-                        <p><strong>Disposition optimale :</strong> Dynamo central, Energy Cell adjacent, machines connectées via conduits</p>
                     </div>
                 </div>
             </div>
@@ -492,6 +867,29 @@ Ordre de craft prioritaire :
 3. Focus sur Mending et Unbreaking
 4. Cycle avec plusieurs villageois
                     </div>
+                    <div class="tutorial-box">
+                        <h4>📝 Tutoriel : Trading Hall</h4>
+                        <div class="steps">
+                            <div class="step">
+                                <h5>Étape 1 : Setup</h5>
+                                <ul>
+                                    <li>Créez une salle 5x5</li>
+                                    <li>Placez des lits et tables de métier</li>
+                                    <li>Isolez chaque villageois</li>
+                                    <li>Ajoutez des trappes de sécurité</li>
+                                </ul>
+                            </div>
+                            <div class="step">
+                                <h5>Étape 2 : Reset</h5>
+                                <ul>
+                                    <li>Détruisez la table de métier</li>
+                                    <li>Attendez la perte du métier</li>
+                                    <li>Replacez la table</li>
+                                    <li>Vérifiez les nouveaux trades</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="card">
@@ -502,6 +900,29 @@ Plant Gatherer + Plant Sower
 Connexion via Item Conduits
 Alimentation RF stable
 Cultures recommandées : carotte/pomme de terre
+                    </div>
+                    <div class="tutorial-box">
+                        <h4>📝 Tutoriel : Ferme Auto</h4>
+                        <div class="steps">
+                            <div class="step">
+                                <h5>Étape 1 : Setup</h5>
+                                <ul>
+                                    <li>Placez le Plant Gatherer</li>
+                                    <li>Ajoutez le Plant Sower</li>
+                                    <li>Connectez les Item Conduits</li>
+                                    <li>Alimentez en RF</li>
+                                </ul>
+                            </div>
+                            <div class="step">
+                                <h5>Étape 2 : Optimisation</h5>
+                                <ul>
+                                    <li>Ajoutez des upgrades de vitesse</li>
+                                    <li>Configurez les filtres</li>
+                                    <li>Mettez en place le stockage</li>
+                                    <li>Automatisez la distribution</li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -514,6 +935,29 @@ Energy Cube pour stockage
 Gas-Burning Generator pour upgrade
 Distribution via Universal Cables
                     </div>
+                    <div class="tutorial-box">
+                        <h4>📝 Tutoriel : Setup Énergie</h4>
+                        <div class="steps">
+                            <div class="step">
+                                <h5>Étape 1 : Base</h5>
+                                <ul>
+                                    <li>Créez le Heat Generator</li>
+                                    <li>Placez près d'une source de lave</li>
+                                    <li>Connectez l'Energy Cube</li>
+                                    <li>Testez la production</li>
+                                </ul>
+                            </div>
+                            <div class="step">
+                                <h5>Étape 2 : Upgrade</h5>
+                                <ul>
+                                    <li>Ajoutez le Gas-Burning Generator</li>
+                                    <li>Configurez la distribution</li>
+                                    <li>Optimisez les ratios</li>
+                                    <li>Automatisez l'alimentation</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="card">
@@ -524,6 +968,29 @@ Spawner naturel + Mob Crusher
 Conveyor Belts pour transport
 Item Collector pour récupération
 Upgrades : Vitesse, Efficacité, Looting
+                    </div>
+                    <div class="tutorial-box">
+                        <h4>📝 Tutoriel : Mob Farm</h4>
+                        <div class="steps">
+                            <div class="step">
+                                <h5>Étape 1 : Structure</h5>
+                                <ul>
+                                    <li>Localisez un spawner</li>
+                                    <li>Créez la chambre de spawn</li>
+                                    <li>Installez les Conveyor Belts</li>
+                                    <li>Placez le Mob Crusher</li>
+                                </ul>
+                            </div>
+                            <div class="step">
+                                <h5>Étape 2 : Optimisation</h5>
+                                <ul>
+                                    <li>Ajoutez les upgrades</li>
+                                    <li>Configurez le transport</li>
+                                    <li>Mettez en place le stockage</li>
+                                    <li>Testez et ajustez</li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -542,6 +1009,69 @@ Upgrades : Vitesse, Efficacité, Looting
                         <li>Wireless Modems pour communication</li>
                         <li>Monitor pour interface utilisateur</li>
                     </ul>
+                </div>
+                <div class="tutorial-box">
+                    <h4>📝 Tutoriel : ComputerCraft</h4>
+                    <div class="steps">
+                        <div class="step">
+                            <h5>Étape 1 : Setup Initial</h5>
+                            <div class="craft-recipe">
+                                <p>Ressources nécessaires :</p>
+                                <ul>
+                                    <li>1 Computer (craft de base)</li>
+                                    <li>1 Mining Turtle</li>
+                                    <li>2 Wireless Modems</li>
+                                    <li>1 Monitor (optionnel)</li>
+                                </ul>
+                                <p>Configuration :</p>
+                                <ol>
+                                    <li>Placez le Computer</li>
+                                    <li>Connectez les modems</li>
+                                    <li>Installez le monitor</li>
+                                    <li>Testez la connexion</li>
+                                </ol>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <h5>Étape 2 : Scripts de Base</h5>
+                            <div class="code-box">
+-- Mining Turtle - Script de base
+function autoMine()
+  while turtle.detectDown() do
+    turtle.digDown()
+    turtle.down()
+  end
+  
+  -- Pattern de minage 3x3
+  for i = 1, 16 do
+    turtle.dig()
+    turtle.forward()
+    if i % 4 == 0 then
+      turtle.turnRight()
+    end
+  end
+end
+
+-- Exécution continue
+while true do
+  autoMine()
+  os.sleep(1)
+end
+                            </div>
+                        </div>
+                        <div class="step">
+                            <h5>Étape 3 : Optimisation</h5>
+                            <div class="craft-recipe">
+                                <p>Améliorations :</p>
+                                <ul>
+                                    <li>Ajoutez des upgrades de vitesse</li>
+                                    <li>Configurez le stockage automatique</li>
+                                    <li>Mettez en place la communication</li>
+                                    <li>Créez des scripts personnalisés</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -587,6 +1117,52 @@ end
                         <li>Mechanical Crafter pour automatisation</li>
                         <li>Système de transport par train</li>
                     </ul>
+                </div>
+                <div class="tutorial-box">
+                    <h4>📝 Tutoriel : Create Mod</h4>
+                    <div class="steps">
+                        <div class="step">
+                            <h5>Étape 1 : Water Wheel</h5>
+                            <div class="craft-recipe">
+                                <p>Ressources nécessaires :</p>
+                                <ul>
+                                    <li>8 Planks</li>
+                                    <li>4 Shafts</li>
+                                    <li>1 Water Source</li>
+                                </ul>
+                                <p>Configuration :</p>
+                                <ol>
+                                    <li>Placez la Water Wheel</li>
+                                    <li>Ajoutez l'eau</li>
+                                    <li>Connectez les Shafts</li>
+                                    <li>Vérifiez la rotation</li>
+                                </ol>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <h5>Étape 2 : Crushing Wheels</h5>
+                            <div class="craft-recipe">
+                                <p>Setup :</p>
+                                <ul>
+                                    <li>Placez deux Crushing Wheels</li>
+                                    <li>Connectez à la Water Wheel</li>
+                                    <li>Ajoutez un entonnoir d'entrée</li>
+                                    <li>Configurez la sortie</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <h5>Étape 3 : Train System</h5>
+                            <div class="code-box">
+Configuration Train Automatique :
+┌─[Station A]─[Tracks]─[Station B]─┐
+│     ↓                      ↓     │
+│  [Cargo]              [Unload]   │
+│     ↓                      ↓     │
+└─[Schedule]──────────[Return]─────┘
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -636,7 +1212,6 @@ Configuration Train Automatique :
 
         <div class="section fade-in">
             <h2>🎮 Commandes Serveur Utiles</h2>
-            
             <div class="code-box">
 /home set [nom]    - Créer un point de téléportation
 /spawn            - Retourner au spawn
